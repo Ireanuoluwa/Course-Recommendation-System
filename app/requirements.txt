@@ -1,0 +1,5 @@
+numpy
+pandas
+sklearn
+streamlit
+streamlit-aggrid==0.2.2-2
