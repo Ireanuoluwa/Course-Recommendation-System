@@ -98,7 +98,10 @@ def train(model_name, params):
         st.success('Done!')
     # TODO: Add other model training code here
     elif model_name == backend.models[1]:
-        pass
+        with st.spinner('Training...'):
+            time.sleep(0.5)
+            backend.train(model_name, params)
+        st.success('Done!')
     elif model_name == backend.models[2]:
         with st.spinner('Training...'):
             time.sleep(0.5)
@@ -154,8 +157,9 @@ elif model_selection == backend.models[1]:
                                               min_value=0, max_value=50,
                                               value=30, step=5)
     temp_user = st.sidebar.text_input(label="Input the user_id")
-    params["user_id"] = temp_user
     params['profile_sim_threshold'] = profile_sim_threshold
+    params['user_id'] = temp_user
+    
 # Clustering model
 elif model_selection == backend.models[2]:
     cluster_no = st.sidebar.slider('Number of Clusters',
@@ -192,9 +196,10 @@ if pred_button and model_selection == backend.models[0]:
     st.table(res_df)
 elif pred_button and model_selection == backend.models[1]:
     # type(temp_user) == str
-    st.text(temp_user)
+    # st.text(temp_user)
     user_ids = [1502801,1609720,87799]
     res_df = predict(model_selection, user_ids, params)
+    st.table(res_df)
 # res_df = pd.merge(res_df, course_df, on=["COURSE_ID"]).drop('COURSE_ID', axis=1)
 elif pred_button and model_selection == backend.models[2]:
     # type(temp_user) == str

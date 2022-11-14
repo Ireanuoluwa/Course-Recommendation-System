@@ -1,8 +1,9 @@
 import pandas as pd
 import numpy as np
+import seaborn as sns
 import pandas as pd
 import numpy as np
-
+import matplotlib.pyplot as plt
 
 from sklearn.cluster import KMeans
 from sklearn.preprocessing import StandardScaler
@@ -114,7 +115,6 @@ def train(model_name, params):
         cluster_labels = km.labels_
         res_df = combine_cluster_labels(user_ids,labels=cluster_labels)
         return res_df
-    
         
 
 
@@ -147,9 +147,7 @@ def predict(model_name, user_ids, params):
     res_dict = {}
     if "profile_sim_threshold" in params:
         profile_sim_threshold = params["profile_sim_threshold"]
-    elif "user_id" in params:
-        temp_user = params["user_id"]
-        temp_user = int(temp_user)
+    
     elif "sim_threshold" in params:
         sim_threshold = params["sim_threshold"] / 100.0
     elif "cluster_no" in params:
@@ -180,6 +178,13 @@ def predict(model_name, user_ids, params):
             break
         # TODO: Add prediction model code here
     if model_name == models[1]:
+
+        if "user_id" in params:
+            temp_user = params['user_id']
+            temp_user = int(temp_user)
+        else:
+            pass
+
         ratings_df = load_ratings()
         profile_df =load_profile()
         course_genres_df =load_courses_genre()
