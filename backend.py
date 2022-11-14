@@ -13,12 +13,13 @@ from sklearn.decomposition import PCA
 models = ("Course Similarity",
           "User Profile",
           "Clustering",
-          "Clustering with PCA",
-          "KNN",
-          "NMF",
-          "Neural Network",
-          "Regression with Embedding Features",
-          "Classification with Embedding Features")
+        #   "Clustering with PCA",
+        #   "KNN",
+        #   "NMF",
+        #   "Neural Network",
+        #   "Regression with Embedding Features",
+        #   "Classification with Embedding Features"
+        )
 
 
 def load_ratings():
