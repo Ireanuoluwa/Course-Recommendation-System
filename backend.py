@@ -113,8 +113,8 @@ def train(model_name, params):
         km = km.fit(features)
         cluster_labels = km.labels_
         res_df = combine_cluster_labels(user_ids,labels=cluster_labels)
-
-    return res_df
+        return res_df
+    
         
 
 
